@@ -9,89 +9,80 @@
 print("=== Surveillance Epidémique Mpox — Congo-Brazzaville 2025 ===")
 print()
 
-#----Donnees des 9 districts sanitaires ----
-# Format : [nom, departement, suspects, confirmes, deces]
+#Initialisation des données de la liste districts(liste vide)
+districts = []
 
-districts = [
-    ["Mossaka-Loukolela", "Cuvette", 12, 12, 0],
-    ["Owando","Cuvette", 3, 2, 0],
-    ["Oyo-Alima", "Cuvette", 3, 3, 0],
-    ["Enyelle-Betou","Likouala", 1, 1, 0],
-    ["Gamboma","Plateaux", 2, 2, 0],
-    ["Lumumba","Pointe-Noire", 1, 1, 0],
-    ["Mvou-mvou","Pointe-Noire", 1, 1, 0],
-    ["Poto-Poto","Brazzaville", 1, 1, 0],
-]
+#L'utilisateur entre le nombre de districts sanitaires à analyser
+nb_districts = int(input("Entrez le nombre de districts sanitaires à analyser : "))
+for i in range (1, nb_districts+1):
+    print("District ",i," :")
+    nom = input("Nom du district : ")
+    departement = input("Departement : ")
+    suspects = int(input("Cas suspects : "))
+    confirmes = int(input("Cas confirmes : "))
+    deces = int(input("Deces : "))
 
-# ----Variables pour les totaux nationaux ----
-total_suspects = 0
+    #j'atoute les données du district i dans la liste districts
+    districts.append([nom,departement,suspects,confirmes,deces])
+
+# variables pour les totaux nationaux
+
+total_suspects  = 0
 total_confirmes = 0
-total_deces = 0
-total_actifs = 0
+total_deces     = 0
+total_actifs    = 0
 
-# ----Compteurs par niveau d'alerte ----
-zones_vertes = 0
-zones_jaunes = 0
-zones_oranges = 0
-zones_rouges = 0
+# variables pour les compteurs par niveau d'alerte
+zones_vertes    = 0
+zones_jaunes    = 0
+zones_oranges   = 0
+zones_rouges    = 0
+# nb_districts    = 9
 
-# ----Boucle principale: pacourir chaque district-----
-for i, districts in enumerate(districts, 1):
-    #Extraire les données du district
-    nom = districts[0]
-    departement = districts[1]
-    suspects = districts[2]
-    confirmes = districts[3]
-    deces = districts[4]
-    
-    #calcul des indicateurs
-    cas_actifs = confirmes - deces
-    letalite = (deces / confirmes) * 100 if confirmes > 0 else 0
-
-    #Determination du niveau d'alerte
-    if confirmes >= 10:
-        alerte = "Rouge"
-        zones_rouges += 1
-    elif 5 <= confirmes <= 9:
-        alerte = "Orange"
-        zones_oranges += 1
-    elif 2 <= confirmes <= 4:
-        alerte = "Jaune"
-        zones_jaunes += 1
+for i in range(nb_districts):
+    print('--- District', i, '---')
+    nom_district = districts[i][0]
+    departement  = districts[i][1]
+    suspects     = districts[i][2]
+    confirmes    = districts[i][3]
+    deces        = districts[i][4]
+    cas_actifs = confirmes - deces                    # TODO 1
+    # Calcul de la letalite
+    if confirmes > 0:
+        letalite = (deces / confirmes) * 100              # TODO 2
     else:
-        alerte = "Verte"
-        zones_vertes += 1
-    
-    #Accumulation des totauxs nationaux
-    total_suspects += suspects
-    total_confirmes += confirmes
-    total_deces += deces
-    total_actifs += cas_actifs
-
-    #Affichage du district
-    print(f"-----District {i} -----")
-    print(f"Nom du district: {nom}")
-    # print(f"Département: {departement}")
-    print(f"Cas suspects: {suspects}")
-    print(f"Cas confirmés: {confirmes}")
-    print(f"Décès: {deces}")
-    print(f"Cas actifs: {cas_actifs}")
-    print(f"Létalité: {letalite:.2f}%")
-    print(f"Niveau d'alerte: {alerte}")
+        letalite = 0
+    # Determination du niveau d'alerte
+    if confirmes >= 10:
+        alerte = 'ROUGE'
+        zones_rouges = zones_rouges + 1                  # TODO 3
+    elif confirmes >= 5:
+        alerte = 'ORANGE'
+        zones_oranges = zones_oranges + 1                 # TODO 4
+    elif confirmes >= 2:
+        alerte = 'JAUNE'
+        zones_jaunes = zones_jaunes + 1                  # TODO 5
+    else:
+        alerte = 'VERT'
+        zones_vertes = zones_vertes + 1
+    total_suspects  = total_suspects  + suspects
+    total_confirmes = total_confirmes + confirmes                   # TODO 6
+    total_deces     = total_deces     + deces                   # TODO 7
+    total_actifs    = total_actifs    + cas_actifs                   # TODO 8
+    print('  Alerte   :', alerte)
+    print('  Actifs   :', cas_actifs)
+    print('  Letalite :', round(letalite, 1), '%')
     print()
-
-# ----Rapport national ----
-print("===========================================================")
-print("=== Rapport National MPOX 2025 ===")
-print("===========================================================")
-print(f"Districts analysés: {len(districts)}")
-print(f"Cas suspects nationaux: {total_suspects}")
-print(f"Cas confirmés nationaux: {total_confirmes}")
-print(f"Décès nationaux: {total_deces}")
-print(f"Cas actifs nationaux: {total_actifs}")
-print()
-print(f"Zones vertes: {zones_vertes}")
-print(f"Zones jaunes: {zones_jaunes}")
-print(f"Zones oranges: {zones_oranges}")
-print(f"Zones rouges: {zones_rouges}")
-print("===========================================================")
+print('=======================================')
+print('      RAPPORT NATIONAL MPOX 2025       ')
+print('=======================================')
+print('Districts analyses   :', nb_districts)
+print('Total suspects       :', total_suspects)
+print('Total confirmes      :', total_confirmes)
+print('Total deces          :', total_deces)
+print('Total cas actifs     :', total_actifs)
+print('Zones VERTES         :', zones_vertes)
+print('Zones JAUNES         :', zones_jaunes)
+print('Zones ORANGES        :', zones_oranges)
+print('Zones ROUGES         :', zones_rouges)
+print('=======================================')
