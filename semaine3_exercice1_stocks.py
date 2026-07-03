@@ -181,39 +181,39 @@ nb_stocks_normaux = 0
 
 # Comptage des ruptures critiques
 if m1_statut == 'RUPTURE CRITIQUE':
-    nb_ruptures_critiques += 1
+    nb_ruptures_critiques = nb_ruptures_critiques +1
 if m2_statut == 'RUPTURE CRITIQUE':
-    nb_ruptures_critiques += 1
+    nb_ruptures_critiques = nb_ruptures_critiques + 1
 if m3_statut == 'RUPTURE CRITIQUE':
-    nb_ruptures_critiques += 1
+    nb_ruptures_critiques = nb_ruptures_critiques + 1
 if m4_statut == 'RUPTURE CRITIQUE':
-    nb_ruptures_critiques += 1
+    nb_ruptures_critiques = nb_ruptures_critiques + 1
 if m5_statut == 'RUPTURE CRITIQUE':
-    nb_ruptures_critiques += 1
+    nb_ruptures_critiques = nb_ruptures_critiques + 1
 
 # Comptage des alertes stock
 if m1_statut == 'ALERTE STOCK':
-    nb_alertes_stock += 1
+    nb_alertes_stock = nb_alertes_stock + 1
 if m2_statut == 'ALERTE STOCK':
-    nb_alertes_stock += 1
+    nb_alertes_stock = nb_alertes_stock + 1
 if m3_statut == 'ALERTE STOCK':
-    nb_alertes_stock += 1
+    nb_alertes_stock = nb_alertes_stock + 1
 if m4_statut == 'ALERTE STOCK':
-    nb_alertes_stock += 1
+    nb_alertes_stock = nb_alertes_stock + 1
 if m5_statut == 'ALERTE STOCK':
-    nb_alertes_stock += 1
+    nb_alertes_stock = nb_alertes_stock + 1
 
 # Comptage des stocks normaux
 if m1_statut == 'STOCK NORMAL':
-    nb_stocks_normaux += 1
+    nb_stocks_normaux = nb_stocks_normaux + 1
 if m2_statut == 'STOCK NORMAL':
-    nb_stocks_normaux += 1
+    nb_stocks_normaux = nb_stocks_normaux + 1
 if m3_statut == 'STOCK NORMAL':
-    nb_stocks_normaux += 1
+    nb_stocks_normaux = nb_stocks_normaux + 1
 if m4_statut == 'STOCK NORMAL':
-    nb_stocks_normaux += 1
+    nb_stocks_normaux = nb_stocks_normaux + 1
 if m5_statut == 'STOCK NORMAL':
-    nb_stocks_normaux += 1
+    nb_stocks_normaux = nb_stocks_normaux + 1
 
 # Liste des medicaments en rupture pour l'alerte
 medicaments_rupture = []
