@@ -38,9 +38,20 @@ zones_jaunes    = 0
 zones_oranges   = 0
 zones_rouges    = 0
 # nb_districts    = 9
+# districts=[
+#     ["Mossaka-Loukolela", "Cuvette", 12, 12, 0],
+#     ["Owando","Cuvette", 3, 2, 0],
+#     ["Oyo-Alima", "Cuvette", 3, 3, 0],
+#     ["Enyelle-Betou","Likouala", 1, 1, 0],
+#     ["Gamboma","Plateaux", 2, 2, 0],
+#     ["Lumumba","Pointe-Noire", 1, 1, 0],
+#     ["Mvou-mvou","Pointe-Noire", 1, 1, 0],
+#     ["Poto-Poto","Brazzaville", 1, 1, 0],
+# ]
 
 for i in range(nb_districts):
     print('--- District', i, '---')
+    # i=0
     nom_district = districts[i][0]
     departement  = districts[i][1]
     suspects     = districts[i][2]
