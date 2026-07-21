@@ -25,9 +25,9 @@ def afficher_tache():
     print("Liste des taches à faire")
     for i, tache in enumerate(taches, 1):
         if tache["terminée"]:
-            etat = "✓"  #  symbole plus clair pour terminé
+            etat = "✓"  #  symbole pour terminé
         else:
-            etat = "○"  # symbole plus clair pour non terminé
+            etat = "○"  # symbole pour non terminé
         print(f"{i}. {etat} {tache['titre']}")
 
 def modifier_tache():
